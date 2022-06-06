@@ -13,6 +13,8 @@ GET https://seia-api.herokuapp.com/errors
 DELETE https://seia-api.herokuapp.com/errors
 ```
 
+API Documentation is available at: https://seia-api.herokuapp.com/apidocs/#/
+
 <b>Options for how to install requirements:</b><br>
 ```
     python setup.py install
