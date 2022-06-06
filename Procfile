@@ -1,0 +1,1 @@
+web: gunicorn run:seia_api
