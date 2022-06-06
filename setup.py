@@ -8,6 +8,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'coverage==6.4.1',
+        'flasgger==0.9.5',
         'Flask==2.1.2',
         'flask-expects-json==1.7.0',
         'Flask-RESTful==0.3.9',
