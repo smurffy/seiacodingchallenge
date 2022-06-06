@@ -1,0 +1,16 @@
+summary: "Delete Errors"
+description: "Deletes all recorded errors"
+produces:
+- "application/json"
+responses:
+  204:
+    description: "No Content"
+    schema:
+      type: "string"
+  400:
+    description: "Failed"
+    schema:
+      type: "object"
+      properties:
+        error:
+          type: "string"

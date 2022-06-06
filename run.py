@@ -1,10 +1,12 @@
 import numpy as np
 import os
 from datetime import datetime as dt
+from flasgger import Swagger
+from flasgger.utils import swag_from
 from flask import Flask, make_response, request, jsonify
 from flask_expects_json import expects_json
-from jsonschema import ValidationError
 from functools import wraps
+from jsonschema import ValidationError
 from werkzeug.exceptions import BadRequest
 
 
@@ -81,6 +83,7 @@ class OverTempFalse:
 def create_app(test_config=None):
     # create and configure the app
     seia_api = Flask(__name__, instance_relative_config=True)
+    swagger = Swagger(seia_api)
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -146,6 +149,7 @@ def create_app(test_config=None):
     @seia_api.post("/temp")
     @expects_json(TempSchema().__dict__)
     @validate_tempdata
+    @swag_from("swagger/temp_post.yml", endpoint='temp', methods=['POST'])
     def temp_post():
         # load request data string into vars
         data = TempData(request)
@@ -159,7 +163,8 @@ def create_app(test_config=None):
             return make_response(jsonify(response), 200)
 
     @seia_api.get("/errors")
-    def errors():
+    @swag_from("swagger/errors_get.yml", endpoint='errors', methods=['GET'])
+    def errors_get():
         response = ErrorList(errors_list).__dict__
         return make_response(jsonify(response), 200)
 
@@ -170,13 +175,16 @@ def create_app(test_config=None):
         return make_response(jsonify(response), 200)
 
     @seia_api.delete("/errors")
-    def delete():
+    @swag_from("swagger/errors_delete.yml", endpoint='errors', methods=['DELETE'])
+    def errors_delete():
         errors_list.clear()
         return make_response(jsonify({}), 204)
 
     return seia_api
 
+
 seia_api = create_app()
+
 
 if __name__ == '__main__':
     seia_api.run()

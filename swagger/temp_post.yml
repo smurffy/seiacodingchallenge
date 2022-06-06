@@ -1,0 +1,40 @@
+summary: "Post Temp"
+description: "Evaluates if temperature is 90 or higher"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  description: "{'data': __data_string__}
+    <br>where __data_string__ is format:
+      __device_id__:__epoch_ms__:'Temperature':__temperature__
+      <br>where __device_id__ is the device ID (int32)
+      <br>      __epoch_ms__ is the timestamp in EpochMS (int64)
+      <br>      __temperature__ is the temperature (float64)
+      <br>      and 'Temperature' is the exact string"
+  required: "true"
+  schema:
+    type: "object"
+    properties:
+      order:
+        type: "object"
+    example: {"data": "365951380:1640995229697:'Temperature':58.48256793121914"}
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        errors:
+          type: "array"
+          items:
+            type: "string"
+  400:
+    description: "Failed"
+    schema:
+      type: "object"
+      properties:
+        error:
+          type: "string"

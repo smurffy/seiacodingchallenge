@@ -1,0 +1,21 @@
+summary: "Get Errors"
+description: "Returns all data strings which have been incorrectly formatted"
+produces:
+- "application/json"
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        errors:
+          type: "array"
+          items:
+            type: "string"
+  400:
+    description: "Failed"
+    schema:
+      type: "object"
+      properties:
+        error:
+          type: "string"
