@@ -1,4 +1,4 @@
-Correctness (score out of 5) score: 2 -- 'formatted_time' inforrectly named 'poch_ms' errors returned status code 200 instead of 400, error buffer is kinda broken: does not store or clear correctly, some misformatted strings describe the error instead of returning 'bad response' (unintentionally)
+Correctness (score out of 5) score: 2 -- 'formatted_time' inforrectly named 'epoch_ms', errors returned status code 200 instead of 400, error buffer is kinda broken: does not store or clear correctly, some misformatted strings describe the error instead of returning 'bad response' (unintentionally)
 Do all test cases pass? (score out of 3) (some leniency for errors)
 - Are errors properly stored and cleared? (score: 2)
 
