@@ -1,0 +1,22 @@
+Correctness (score out of 5) score: 2 -- 'formatted_time' inforrectly named 'poch_ms' errors returned status code 200 instead of 400, error buffer is kinda broken: does not store or clear correctly, some misformatted strings describe the error instead of returning 'bad response' (unintentionally)
+Do all test cases pass? (score out of 3) (some leniency for errors)
+- Are errors properly stored and cleared? (score: 2)
+
+Code quality (score out of 4) score: 3 -- code is well formatted and documentation and readme are included, however, the code architecture is a little strange. One function has 4 wrappers. Seems a little excessive to me, and takes away from the readability for sure.
+- Does the architecture make sense? (2)
+- Is the code well commented? (1)
+- Is there a readme / other instructions? (1)
+- Is the number of files reasonable for the task?
+
+Submission (score out of 1) score: 1
+- Is the API hosted on the public internet?
+- Is the response time within reason?
+
+Bonus
+- Are tests written? (score out of +1) score: +.5 -- Couple of tests 
+- Is the error buffer persistent of a server restart? (out of +1)
+
+Minus 
+- Is the code submitted through Google Drive (or similar) and not zipped? score: -1
+
+Total: 6.5/10
